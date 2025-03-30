@@ -16,5 +16,14 @@ namespace WinFormsAppDemo
         {
             lblHello.Text = "Hello World!";
         }
+
+        private async void btnCounter_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i <= 10; i++)
+            {
+                lblCounter.Text = i.ToString();
+                await Task.Delay(500);
+            }
+        }
     }
 }

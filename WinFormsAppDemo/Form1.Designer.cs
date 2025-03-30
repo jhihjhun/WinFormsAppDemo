@@ -30,6 +30,8 @@
         {
             lblHello = new Label();
             btnSayHello = new Button();
+            btnCounter = new Button();
+            lblCounter = new Label();
             SuspendLayout();
             // 
             // lblHello
@@ -51,11 +53,32 @@
             btnSayHello.UseVisualStyleBackColor = true;
             btnSayHello.Click += btnSayHello_Click;
             // 
+            // btnCounter
+            // 
+            btnCounter.Location = new Point(275, 239);
+            btnCounter.Name = "btnCounter";
+            btnCounter.Size = new Size(105, 23);
+            btnCounter.TabIndex = 2;
+            btnCounter.Text = "Count To 10";
+            btnCounter.UseVisualStyleBackColor = true;
+            btnCounter.Click += btnCounter_Click;
+            // 
+            // lblCounter
+            // 
+            lblCounter.AutoSize = true;
+            lblCounter.Location = new Point(395, 243);
+            lblCounter.Name = "lblCounter";
+            lblCounter.Size = new Size(125, 15);
+            lblCounter.TabIndex = 3;
+            lblCounter.Text = "Please press button...";
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(lblCounter);
+            Controls.Add(btnCounter);
             Controls.Add(btnSayHello);
             Controls.Add(lblHello);
             Name = "Form1";
@@ -69,5 +92,7 @@
 
         private Label lblHello;
         private Button btnSayHello;
+        private Button btnCounter;
+        private Label lblCounter;
     }
 }
