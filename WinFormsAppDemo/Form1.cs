@@ -9,7 +9,7 @@ namespace WinFormsAppDemo
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            tmrDatetime.Start();
         }
 
         private void btnSayHello_Click(object sender, EventArgs e)
@@ -24,6 +24,11 @@ namespace WinFormsAppDemo
                 lblCounter.Text = i.ToString();
                 await Task.Delay(500);
             }
+        }
+
+        private void tmrDatetime_Tick(object sender, EventArgs e)
+        {
+            lblDatetime.Text = DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss");
         }
     }
 }

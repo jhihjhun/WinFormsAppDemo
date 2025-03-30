@@ -28,10 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             lblHello = new Label();
             btnSayHello = new Button();
             btnCounter = new Button();
             lblCounter = new Label();
+            lblDatetime = new Label();
+            tmrDatetime = new System.Windows.Forms.Timer(components);
             SuspendLayout();
             // 
             // lblHello
@@ -72,11 +75,26 @@
             lblCounter.TabIndex = 3;
             lblCounter.Text = "Please press button...";
             // 
+            // lblDatetime
+            // 
+            lblDatetime.AutoSize = true;
+            lblDatetime.Location = new Point(275, 355);
+            lblDatetime.Name = "lblDatetime";
+            lblDatetime.Size = new Size(140, 15);
+            lblDatetime.TabIndex = 4;
+            lblDatetime.Text = "yyyy/MM/dd HH:mm:ss";
+            // 
+            // tmrDatetime
+            // 
+            tmrDatetime.Interval = 1000;
+            tmrDatetime.Tick += tmrDatetime_Tick;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(lblDatetime);
             Controls.Add(lblCounter);
             Controls.Add(btnCounter);
             Controls.Add(btnSayHello);
@@ -94,5 +112,7 @@
         private Button btnSayHello;
         private Button btnCounter;
         private Label lblCounter;
+        private Label lblDatetime;
+        private System.Windows.Forms.Timer tmrDatetime;
     }
 }
