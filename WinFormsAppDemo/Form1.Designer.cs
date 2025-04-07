@@ -28,13 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
             lblHello = new Label();
             btnSayHello = new Button();
             btnCounter = new Button();
             lblCounter = new Label();
             lblDatetime = new Label();
-            tmrDatetime = new System.Windows.Forms.Timer(components);
             SuspendLayout();
             // 
             // lblHello
@@ -84,11 +82,6 @@
             lblDatetime.TabIndex = 4;
             lblDatetime.Text = "yyyy/MM/dd HH:mm:ss";
             // 
-            // tmrDatetime
-            // 
-            tmrDatetime.Interval = 1000;
-            tmrDatetime.Tick += tmrDatetime_Tick;
-            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -101,6 +94,7 @@
             Controls.Add(lblHello);
             Name = "Form1";
             Text = "Form1";
+            FormClosing += OnFormClosing;
             Load += Form1_Load;
             ResumeLayout(false);
             PerformLayout();
@@ -113,6 +107,5 @@
         private Button btnCounter;
         private Label lblCounter;
         private Label lblDatetime;
-        private System.Windows.Forms.Timer tmrDatetime;
     }
 }
