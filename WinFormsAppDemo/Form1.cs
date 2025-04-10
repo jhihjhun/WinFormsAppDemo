@@ -3,6 +3,7 @@ namespace WinFormsAppDemo
     public partial class Form1 : Form
     {
         private readonly CancellationTokenSource _cts = new();
+        private bool _isCounting = false;
 
         public Form1()
         {
@@ -21,23 +22,42 @@ namespace WinFormsAppDemo
 
         private async void btnCounter_Click(object sender, EventArgs e)
         {
-            for (int i = 0; i <= 10; i++)
+            if (_isCounting)
             {
-                lblCounter.Text = i.ToString();
-                await Task.Delay(500);
+                return;
+            }
+
+            _isCounting = true;
+
+            try
+            {
+                for (int i = 0; i <= 10; i++)
+                {
+                    lblCounter.Text = i.ToString();
+                    await Task.Delay(500);
+                }
+            }
+            finally
+            {
+                _isCounting = false;
             }
         }
 
-        private void StartClock(CancellationToken token)
+        private async void StartClock(CancellationToken token)
         {
-            Task.Run(async () =>
+            while (!token.IsCancellationRequested)
             {
-                while (!token.IsCancellationRequested)
+                try
                 {
                     UpdateUI(UpdateDatetime);
-                    await Task.Delay(1000);
+                    token.ThrowIfCancellationRequested();
+                    await Task.Delay(1000, token);
                 }
-            }, token);
+                catch (TaskCanceledException)
+                {
+                    break;
+                }
+            }
         }
 
         private void UpdateUI(Action action)
